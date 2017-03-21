@@ -6,7 +6,7 @@ public class Ozlympic {
 	static Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		
+		//RASNDKJASDKJASHDJKASHKDJLASJKL:DJASKL
 //		Athlete shit = new Athlete(0, null, 0, 0);
 //		Athlete shit2 = new Athlete(0, null, 0, 0);
 //		
