@@ -11,7 +11,11 @@ public class Event {
 	
 	private static int eventsRun;
 	
-	public ArrayList<Athlete> runEvent(ArrayList<Athlete> comp, Event upcoming) {
+	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming) {
+		this.setCode(code);
+		System.out.println("Event " + code);
+		
+		
 		
 		Random randomizer = new Random();
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
@@ -24,15 +28,23 @@ public class Event {
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time1 =ath1.compete();
 		
+		athInComp.remove(athInComp.indexOf(ath1));
+		
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time2 =ath2.compete();
 		
+		athInComp.remove(athInComp.indexOf(ath2));
+		
 		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));
+		
+		athInComp.remove(athInComp.indexOf(ath3));
+		
 		int time3 =ath3.compete();
 
 		if ( time1 > time2 && time1 > time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
-			ath1.setScore(5);			
+			ath1.setScore(5);	
+			
 			if (time2 > time3) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(2);
@@ -115,6 +127,15 @@ public class Event {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public static int getEventsRun() {
+		eventsRun ++;
+		return eventsRun;
+	}
+
+	public static void setEventsRun(int eventsRun) {
+		Event.eventsRun = eventsRun;
 	}
 
 

@@ -54,10 +54,7 @@ public class Athlete {
 		this.age = age;
 	}	
 	
-
-
 	public void setScore(int i) {
-
 		score = score + i;
 		
 	}

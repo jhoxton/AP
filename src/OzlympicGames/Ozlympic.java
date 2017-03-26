@@ -5,19 +5,18 @@ public class Ozlympic {
 
 	static Event upcoming = new Event();
 	static Scanner input = new Scanner(System.in);
-	static boolean eventSet = false;
+	protected static boolean eventSet = false;
 
 	public static void main(String[] args) {
 	
-		Athlete shit = new Athlete(0, "Shit 1", 0, 0); //TEST ATHLETES 
-		Athlete shit2 = new Athlete(0, "Shit 2", 0, 0);
-		Swimmer swim = new Swimmer(0, "Swim Shit", 0, 0); 
-		Sprinter sprint = new Sprinter(0, "Sprint shit", 0, 0);
-		
+		Cyclist cycle = new Cyclist(0, "Cycle Test", 0, 0); //TEST ATHLETES 
+		Swimmer swim = new Swimmer(0, "Swim Test", 0, 0); 
+		Sprinter sprint = new Sprinter(0, "Sprint Test", 0, 0);
+		SuperAthlete superAth = new SuperAthlete(0, "Super Test", 0, 0);
 		
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 	
-		comp.add(shit);
-		comp.add(shit2);
+		comp.add(cycle);
+		comp.add(superAth);
 		comp.add(swim);
 		comp.add(sprint);
 		
@@ -29,56 +28,44 @@ public class Ozlympic {
 		System.out.println("\n==============");
 		System.out.println("Ozlympic Games\n==============");
 		
-		if(eventSet != false) {
+		if(eventSet == true) {
 			System.out.println("The next event to be held is a " + upcoming.getName() + "\n");
+		} else {
+			System.out.println("No upcoming event\n");
 		}
 		
 		System.out.println("1) Select a Game to Run\n2) Predict the Winner of Game\n3) Start the Game\n4) Display the results of all Games\n5) Display points of all athletes\n6) Exit\n");
 		System.out.println("Enter an Option: ");
 		
-		
-			
-			
-		
 		int option = input.nextInt();
-//		try {
 			switch(option) {
-				case 1: selectGame(upcoming, comp);
+				case 1: selectGame(comp, upcoming);
 					break;					
 				case 2: predictGame();
 					break;
-				case 3: startGame(comp, upcoming); //THIS WILL BE THE ATHLETE ARRAY
+				case 3: startGame(comp, upcoming); 
 					break;
 				case 4: displayGames();
 					break;
 				case 5: displayAthletes(comp);
 					break;
-				case 6: //WHATS THE COMMAND TO QUIT PROGRAM????????????
+				case 6: 
+					System.out.println("Arrays cleared. Games reset. Goodbye!");
+					System.exit(0);
 					break;
 				default:
 					System.out.println("Invalid option!");
 			} 
 			
-//		} catch (Exception e) { //FIND CODE FOR THIS TO WORK!!!!!
-//			System.out.println("Invalid input\nPlease enter a number between 1-6");
-//			System.out.println();
-//			input.nextLine();
-//			}
-		
+		return;
+			
 		}
-		
 
-		
-	
-
-
-	static void selectGame(Event upcoming, ArrayList<Athlete> comp) {
+	static void selectGame(ArrayList<Athlete> comp, Event upcoming) {
 		
 		Event currentEvent = new Event();
 		
-		if(eventSet == true) {
-			eventSet = false;
-		}
+
 		
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
@@ -97,10 +84,10 @@ public class Ozlympic {
 			} else {
 				System.out.println("Please select an event to hold");
 			}
-			currentEvent = upcoming;
-			currentEvent = null;
-			menu(comp, upcoming);
 			
+			currentEvent = upcoming;
+			menu(comp, upcoming);
+			return;
 		
 	} 
 	
@@ -108,7 +95,7 @@ public class Ozlympic {
 
 
 	static void predictGame() {
-		
+		//TODO
 	}
 	
 	static void startGame(ArrayList<Athlete> comp, Event upcoming) {
@@ -122,7 +109,6 @@ public class Ozlympic {
 			upcoming.runEvent(comp, upcoming);			
 		}
 		
-		upcoming = null;
 		eventSet = false;
 		menu(comp, upcoming);
 
