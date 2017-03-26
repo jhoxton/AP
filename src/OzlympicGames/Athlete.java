@@ -1,5 +1,7 @@
 package OzlympicGames;
 
+import java.util.Random;
+
 public class Athlete {
 
 	private int id;
@@ -14,6 +16,16 @@ public class Athlete {
 		this.score = score;
 	}
 		
+	public int compete() {
+		int maximum = 20;
+		int minimum = 10;
+		Random rn = new Random();
+		int range = maximum - minimum + 1;
+		int time =  rn.nextInt(range) + minimum;
+		return time;
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -45,6 +57,7 @@ public class Athlete {
 
 
 	public void setScore(int i) {
+
 		score = score + i;
 		
 	}

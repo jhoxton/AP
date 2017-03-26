@@ -76,7 +76,9 @@ public class Ozlympic {
 		
 		Event currentEvent = new Event();
 		
-		System.out.println("TEST CASE=4");
+		if(eventSet == true) {
+			eventSet = false;
+		}
 		
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
@@ -96,6 +98,7 @@ public class Ozlympic {
 				System.out.println("Please select an event to hold");
 			}
 			currentEvent = upcoming;
+			currentEvent = null;
 			menu(comp, upcoming);
 			
 		
@@ -114,18 +117,13 @@ public class Ozlympic {
 			System.out.println("Please select an event to hold first");
 			menu(comp, upcoming);
 		} else {
-			eventSet = false;
+			
 		System.out.println("Running Event....");
-			upcoming.runEvent(comp, upcoming);
-			
-			
-//			menu(comp, upcoming);
-//			System.out.println("Returning to menu?");
-			
-			
-			
+			upcoming.runEvent(comp, upcoming);			
 		}
+		
 		upcoming = null;
+		eventSet = false;
 		menu(comp, upcoming);
 
 		
