@@ -17,6 +17,7 @@ public class Athlete {
 	}
 		
 	public int compete() {
+		
 		int maximum = 20;
 		int minimum = 10;
 		Random rn = new Random();

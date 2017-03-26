@@ -34,16 +34,17 @@ public class Ozlympic {
 		Sprinter sprint2 = new Sprinter(0, "Sprint Test 2", 0, 0);
 		Sprinter sprint3 = new Sprinter(0, "Sprint Test 3", 0, 0);
 		Sprinter sprint4 = new Sprinter(0, "Sprint Test 4", 0, 0);
+		Sprinter sprint5 = new Sprinter(0, "Sprint Test 5", 0, 0);
 		comp.add(sprint);
 		comp.add(sprint2);
 		comp.add(sprint3);
 		comp.add(sprint4);
+		comp.add(sprint5);
 		
 		SuperAthlete superAth = new SuperAthlete(0, "Super Test 1", 0, 0);
 		SuperAthlete superAth2 = new SuperAthlete(0, "Super Test 2", 0, 0);
 		SuperAthlete superAth3 = new SuperAthlete(0, "Super Test 3", 0, 0);
 		SuperAthlete superAth4 = new SuperAthlete(0, "Super Test 4", 0, 0);
-
 		comp.add(superAth);
 		comp.add(superAth2);
 		comp.add(superAth3);
@@ -76,7 +77,7 @@ public class Ozlympic {
 					break;
 				case 3: startGame(comp, upcoming, loadArray); //TODO add loadArray 
 					break;
-				case 4: displayGames();
+				case 4: displayGames(loadArray);
 					break;
 				case 5: displayAthletes(comp, loadArray);
 					break;
@@ -97,12 +98,13 @@ public class Ozlympic {
 		
 		
 		Event currentEvent = new Event();
-		Event loading = new Event();
+		
 //		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
 		
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
 //		try
+		loadArray = comp;
 			if(option == 1) {				
 				currentEvent = new SwimEvent();
 				eventSet = true;			
@@ -110,7 +112,10 @@ public class Ozlympic {
 				
 				currentEvent = new RunningEvent();
 				eventSet = true;
-				loading.loadEvent(loadArray);//DID THIS WORK FOR SPRINT????
+				currentEvent.loadEvent(loadArray);
+				
+				//THIS WORKED FOR SPRINT!!!!!!!!!!!
+				
 				
 			} else if (option ==3) {
 				
@@ -120,7 +125,10 @@ public class Ozlympic {
 				System.out.println("Please select an event to hold");
 			}
 			upcoming = new Event();
+			
 			//TODO Change to loadArray
+			
+			
 			currentEvent = upcoming;
 			menu(comp, upcoming, loadArray);
 			return;
@@ -142,7 +150,8 @@ public class Ozlympic {
 		} else {
 			
 		System.out.println("Running Event....");
-			upcoming.runEvent(comp, upcoming, loadArray);			
+			upcoming.runEvent(comp, upcoming, loadArray);	
+			
 		}
 		
 		eventSet = false;
@@ -150,7 +159,8 @@ public class Ozlympic {
 		
 	}
 	
-	static void displayGames() {
+	static void displayGames(ArrayList<Athlete> loadArray) {
+		System.out.println(loadArray);
 		
 		
 	}
