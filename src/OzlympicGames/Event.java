@@ -11,35 +11,31 @@ public class Event {
 	
 	private static int eventsRun;
 	
-	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming) {
+	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
 		this.setCode(code);
 		System.out.println("Event " + code);
-		
-		
-		
+	
 		Random randomizer = new Random();
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
-		
-		for (int i=0;i < comp.size(); i++) {
+
+		for (int i=0;i < comp.size(); i++) { //Copies main array to event object
 			Athlete currentAthlete = comp.get(i);
-			athInComp.add(currentAthlete);
+			athInComp.add(currentAthlete);			
 		}
 		
-		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));
-		int time1 =ath1.compete();
-		
-		athInComp.remove(athInComp.indexOf(ath1));
-		
+		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
+		int time1 =ath1.compete();	
+		checkComp(athInComp); //THIS IS THE RIGHT PLACE TO PUT THIS!!!!
+			
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
-		int time2 =ath2.compete();
+		int time2 =ath2.compete();		
 		
-		athInComp.remove(athInComp.indexOf(ath2));
-		
-		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));
-		
-		athInComp.remove(athInComp.indexOf(ath3));
-		
+		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time3 =ath3.compete();
+//		athInComp.remove(athInComp.indexOf(ath3));		
+		
+		
+		
 
 		if ( time1 > time2 && time1 > time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
@@ -93,26 +89,29 @@ public class Event {
 //		System.out.println(FirstPlace.compete());
 //		FirstPlace.setScore(5);					
 //		FirstPlace = null;
-//		
-//		//Sets 2nd place
-//		Athlete secondPlace = athInComp.get(randomizer.nextInt(athInComp.size()));
-//		System.out.println("Second place is " + secondPlace.getName());
-//		athInComp.remove(athInComp.indexOf(secondPlace));
-//		secondPlace.setScore(2);
-//		System.out.println(secondPlace.compete());
-//		secondPlace =null;
-//		
-//		//Sets 3rd place
-//		Athlete thirdPlace = athInComp.get(randomizer.nextInt(athInComp.size()));
-//		System.out.println("Third place is " + thirdPlace.getName());
-//		athInComp.remove(athInComp.indexOf(thirdPlace));
-//		thirdPlace.setScore(1);
-//		System.out.println(thirdPlace.compete());
-//		thirdPlace =null;
 		
 		return comp; 
 	}
+
+	public ArrayList<Athlete> checkComp (ArrayList<Athlete> athInComp) {
+		for (int i=0;i < athInComp.size(); i++) { //Copies main array to event object
+			Athlete currentAthlete = athInComp.get(i);
+			if(currentAthlete instanceof Sprinter) {
+				System.out.println("Check method worked");
+			} else {
+				athInComp.remove(athInComp.indexOf(currentAthlete));
+			}			
+		}
+		
+		return athInComp;
+	}
 	
+	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> loadArray){
+		return loadArray;
+		
+		
+	}
+
 	public String getName() {	
 		return name;
 	}
@@ -137,8 +136,6 @@ public class Event {
 	public static void setEventsRun(int eventsRun) {
 		Event.eventsRun = eventsRun;
 	}
-
-
-	
+				
 	
 }

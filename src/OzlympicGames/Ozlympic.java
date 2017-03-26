@@ -9,22 +9,53 @@ public class Ozlympic {
 
 	public static void main(String[] args) {
 	
+		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
+		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
+		
 		Cyclist cycle = new Cyclist(0, "Cycle Test", 0, 0); //TEST ATHLETES 
-		Swimmer swim = new Swimmer(0, "Swim Test", 0, 0); 
-		Sprinter sprint = new Sprinter(0, "Sprint Test", 0, 0);
-		SuperAthlete superAth = new SuperAthlete(0, "Super Test", 0, 0);
-		
-		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 	
+		Cyclist cycle2 = new Cyclist(0, "Cycle Test 2", 0, 0); 
+		Cyclist cycle3 = new Cyclist(0, "Cycle Test 3", 0, 0); //TEST ATHLETES 
+		Cyclist cycle4 = new Cyclist(0, "Cycle Test 4", 0, 0); //TEST ATHLETES 
 		comp.add(cycle);
-		comp.add(superAth);
-		comp.add(swim);
-		comp.add(sprint);
+		comp.add(cycle2);
+		comp.add(cycle3);
+		comp.add(cycle4);
 		
-		menu(comp, upcoming);
+		Swimmer swim = new Swimmer(0, "Swim Test", 0, 0); 
+		Swimmer swim2 = new Swimmer(0, "Swim Test 2", 0, 0); 
+		Swimmer swim3 = new Swimmer(0, "Swim Test 3", 0, 0); 
+		Swimmer swim4 = new Swimmer(0, "Swim Test 4", 0, 0); 
+		comp.add(swim);
+		comp.add(swim2);
+		comp.add(swim3);
+		comp.add(swim4);
+		
+		Sprinter sprint = new Sprinter(0, "Sprint Test", 0, 0);
+		Sprinter sprint2 = new Sprinter(0, "Sprint Test 2", 0, 0);
+		Sprinter sprint3 = new Sprinter(0, "Sprint Test 3", 0, 0);
+		Sprinter sprint4 = new Sprinter(0, "Sprint Test 4", 0, 0);
+		comp.add(sprint);
+		comp.add(sprint2);
+		comp.add(sprint3);
+		comp.add(sprint4);
+		
+		SuperAthlete superAth = new SuperAthlete(0, "Super Test 1", 0, 0);
+		SuperAthlete superAth2 = new SuperAthlete(0, "Super Test 2", 0, 0);
+		SuperAthlete superAth3 = new SuperAthlete(0, "Super Test 3", 0, 0);
+		SuperAthlete superAth4 = new SuperAthlete(0, "Super Test 4", 0, 0);
+
+		comp.add(superAth);
+		comp.add(superAth2);
+		comp.add(superAth3);
+		comp.add(superAth4);
+		
+		
+		
+		menu(comp, upcoming, loadArray);
 		
 	}
-	public static void menu(ArrayList<Athlete> comp, Event upcoming) {
-	
+	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
+		
 		System.out.println("\n==============");
 		System.out.println("Ozlympic Games\n==============");
 		
@@ -39,15 +70,15 @@ public class Ozlympic {
 		
 		int option = input.nextInt();
 			switch(option) {
-				case 1: selectGame(comp, upcoming);
+				case 1: selectGame(comp, upcoming, loadArray);
 					break;					
 				case 2: predictGame();
 					break;
-				case 3: startGame(comp, upcoming); 
+				case 3: startGame(comp, upcoming, loadArray); //TODO add loadArray 
 					break;
 				case 4: displayGames();
 					break;
-				case 5: displayAthletes(comp);
+				case 5: displayAthletes(comp, loadArray);
 					break;
 				case 6: 
 					System.out.println("Arrays cleared. Games reset. Goodbye!");
@@ -55,28 +86,32 @@ public class Ozlympic {
 					break;
 				default:
 					System.out.println("Invalid option!");
-			} 
-			
+			} 			
 		return;
 			
 		}
 
-	static void selectGame(ArrayList<Athlete> comp, Event upcoming) {
+	static void selectGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
+		
+// MAKE A LOAD GAME EVENT THAT PUTS ATHLETES IN AN ARRAY FIRST		
+		
 		
 		Event currentEvent = new Event();
-		
-
+		Event loading = new Event();
+//		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
 		
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
 //		try
 			if(option == 1) {				
 				currentEvent = new SwimEvent();
-				eventSet = true;
+				eventSet = true;			
 			} else if(option ==2) {
 				
 				currentEvent = new RunningEvent();
 				eventSet = true;
+				loading.loadEvent(loadArray);//DID THIS WORK FOR SPRINT????
+				
 			} else if (option ==3) {
 				
 				currentEvent = new CyclingEvent();				
@@ -84,9 +119,10 @@ public class Ozlympic {
 			} else {
 				System.out.println("Please select an event to hold");
 			}
-			
+			upcoming = new Event();
+			//TODO Change to loadArray
 			currentEvent = upcoming;
-			menu(comp, upcoming);
+			menu(comp, upcoming, loadArray);
 			return;
 		
 	} 
@@ -98,21 +134,19 @@ public class Ozlympic {
 		//TODO
 	}
 	
-	static void startGame(ArrayList<Athlete> comp, Event upcoming) {
+	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray) {
 		
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
-			menu(comp, upcoming);
+			menu(comp, upcoming, loadArray);
 		} else {
 			
 		System.out.println("Running Event....");
-			upcoming.runEvent(comp, upcoming);			
+			upcoming.runEvent(comp, upcoming, loadArray);			
 		}
 		
 		eventSet = false;
-		menu(comp, upcoming);
-
-		
+		menu(comp, upcoming, loadArray);		
 		
 	}
 	
@@ -121,7 +155,7 @@ public class Ozlympic {
 		
 	}
 
-	static void displayAthletes(ArrayList<Athlete> comp) {
+	static void displayAthletes(ArrayList<Athlete> comp, ArrayList<Athlete> loadArray) {
 		for(int i = 0; i < comp.size(); i++) {
 			
 			Athlete currentAthlete = comp.get(i);
@@ -130,12 +164,9 @@ public class Ozlympic {
 			System.out.println("Name:" +currentAthlete.getName());
 			System.out.println("Age:" +currentAthlete.getAge());
 			System.out.println("Current Score:" +currentAthlete.getScore());
-			System.out.println("=============");
-			
-			
 			
 		}
 		
-		menu(comp, upcoming);
+		menu(comp, upcoming, loadArray);
 	}
 }
