@@ -6,4 +6,6 @@ public class CyclingEvent extends Event {
 		super();
 		setName("Cycling Event");		
 	}
+	
+	
 }
