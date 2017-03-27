@@ -10,6 +10,9 @@ public class Event {
 	private static String code;
 	
 	private static int eventsRun;
+	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
+	
+	
 	
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
 		this.setCode(code);
@@ -97,25 +100,11 @@ public class Event {
 		return loadArray; 
 	}
 
-//	public ArrayList<Athlete> checkComp (ArrayList<Athlete> athInComp) {
-//		for (int i=0;i < athInComp.size(); i++) { //Copies main array to event object
-//			Athlete currentAthlete = athInComp.get(i);
-//			if(currentAthlete instanceof Sprinter) {
-//				System.out.println("Check method worked");
-//			} else {
-//				athInComp.remove(athInComp.indexOf(currentAthlete));
-//			}			
-//		}
-//		
-//		return athInComp;
-//	}
-//	
-	public void loadEvent(ArrayList<Athlete> loadArray){
-		
+	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){
+//		this.athletes = athletes;
 		System.out.println("Called superclass method");
-		return;
-		
-		
+		return athletes;
+				
 	}
 
 	public String getName() {	

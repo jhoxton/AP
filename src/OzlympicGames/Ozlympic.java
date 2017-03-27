@@ -12,6 +12,7 @@ public class Ozlympic {
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
 		
+		
 		Cyclist cycle = new Cyclist(0, "Cycle Test", 0, 0); //TEST ATHLETES 
 		Cyclist cycle2 = new Cyclist(0, "Cycle Test 2", 0, 0); 
 		Cyclist cycle3 = new Cyclist(0, "Cycle Test 3", 0, 0); //TEST ATHLETES 
@@ -94,20 +95,13 @@ public class Ozlympic {
 
 	static void selectGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
 		
-// MAKE A LOAD GAME EVENT THAT PUTS ATHLETES IN AN ARRAY FIRST		
-		
-		
 		Event currentEvent = new Event();
-		
-//		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
 		
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
-//		try
-//		System.out.println(loadArray);
 		loadArray = comp;
-//		System.out.println(loadArray);
-		ArrayList<Athlete> test = new ArrayList<Athlete>();
+		System.out.println(loadArray.size());
+		
 			if(option == 1) {				
 				currentEvent = new SwimEvent();
 				eventSet = true;			
@@ -116,8 +110,13 @@ public class Ozlympic {
 				currentEvent = new RunningEvent();
 				eventSet = true;
 				
-				currentEvent.loadEvent(loadArray);
-				System.out.println("loadArray ........ " +loadArray);
+				currentEvent.loadEvent(loadArray); 
+				
+			
+				System.out.println("This array was returned" +loadArray.size());
+				System.out.println(loadArray);
+				
+				
 				
 				
 				
