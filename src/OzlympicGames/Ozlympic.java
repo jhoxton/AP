@@ -104,17 +104,22 @@ public class Ozlympic {
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
 //		try
+//		System.out.println(loadArray);
 		loadArray = comp;
+//		System.out.println(loadArray);
+		ArrayList<Athlete> test = new ArrayList<Athlete>();
 			if(option == 1) {				
 				currentEvent = new SwimEvent();
 				eventSet = true;			
-			} else if(option ==2) {
 				
+			} else if(option ==2) {				
 				currentEvent = new RunningEvent();
 				eventSet = true;
-				currentEvent.loadEvent(loadArray);
 				
-				//THIS WORKED FOR SPRINT!!!!!!!!!!!
+				currentEvent.loadEvent(loadArray);
+				System.out.println("loadArray ........ " +loadArray);
+				
+				
 				
 				
 			} else if (option ==3) {
