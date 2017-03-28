@@ -11,6 +11,8 @@ public class Ozlympic {
 	
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
+		ArrayList<Event> pastEvents = new ArrayList<Event>();
+//		ArrayList<Event> pastEvents = null;
 		
 		
 		Cyclist cycle = new Cyclist(0, "Cycle Test", 0, 0); //TEST ATHLETES 
@@ -51,12 +53,10 @@ public class Ozlympic {
 		comp.add(superAth3);
 		comp.add(superAth4);
 		
-		
-		
-		menu(comp, upcoming, loadArray);
+		menu(comp, upcoming, loadArray, pastEvents);
 		
 	}
-	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
+	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
 		
 		System.out.println("\n==============");
 		System.out.println("Ozlympic Games\n==============");
@@ -76,9 +76,11 @@ public class Ozlympic {
 					break;					
 				case 2: predictGame();
 					break;
-				case 3: startGame(comp, upcoming, loadArray); //TODO add loadArray 
+				case 3: startGame(comp, upcoming, loadArray, pastEvents);  
+				
 					break;
-				case 4: displayGames(loadArray);
+				case 4: 
+				displayGames(loadArray, pastEvents);
 					break;
 				case 5: displayAthletes(comp, loadArray);
 					break;
@@ -145,12 +147,8 @@ public class Ozlympic {
 				System.out.println("Please select an event to hold");
 			}
 			upcoming = new Event();
-			
-			//TODO Change to loadArray
-			
-			
 			currentEvent = upcoming;
-			menu(comp, upcoming, loadArray);
+			menu(comp, upcoming, loadArray, null);
 			return;
 		
 	} 
@@ -162,25 +160,34 @@ public class Ozlympic {
 		//TODO
 	}
 	
-	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray) {
+	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
 		
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
-			menu(comp, upcoming, loadArray);
+			menu(comp, upcoming, loadArray, pastEvents);
 		} else {
 			
-		System.out.println("Running Event....");
-			upcoming.runEvent(comp, upcoming, loadArray);	
+//		System.out.println("Running Event....");
+		
+		
+		
+		upcoming.runEvent(comp, upcoming, loadArray);	
 			
 		}
+		ArrayList<Event> current = new ArrayList<Event>();
+		current.add(upcoming);
+		pastEvents = current;
 		
 		eventSet = false;
-		menu(comp, upcoming, loadArray);		
+		menu(comp, upcoming, loadArray, pastEvents);		
 		
 	}
 	
-	static void displayGames(ArrayList<Athlete> loadArray) {
-		System.out.println(loadArray);
+	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
+		//TODO Loop over past events
+		//TODO Apply get/set methods in Events class
+		System.out.println(pastEvents);
+		menu(loadArray, upcoming, loadArray, pastEvents);
 		
 		
 	}
@@ -197,6 +204,6 @@ public class Ozlympic {
 			
 		}
 		
-		menu(comp, upcoming, loadArray);
+		menu(comp, upcoming, loadArray, null);
 	}
 }

@@ -33,11 +33,8 @@ public class Event {
 		
 		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time3 =ath3.compete();
-//		athInComp.remove(athInComp.indexOf(ath3));		
 		
-		
-		
-
+//TODO Turn the below into a method
 		if ( time1 > time2 && time1 > time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
 			ath1.setScore(5);	
@@ -82,21 +79,11 @@ public class Event {
 				ath2.setScore(1);
 			}
 		}
-	
-//		//Sets 1st place
-//		Athlete FirstPlace = athInComp.get(randomizer.nextInt(athInComp.size()));
-//		System.out.println("Winner is " + FirstPlace.getName());		
-//		athInComp.remove(athInComp.indexOf(FirstPlace));
-//		System.out.println(FirstPlace.compete());
-//		FirstPlace.setScore(5);					
-//		FirstPlace = null;
-		
 		return loadArray; 
 	}
 
 	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){
 		this.athletes = athletes;
-		System.out.println("Called superclass method");
 		return athletes;
 				
 	}
