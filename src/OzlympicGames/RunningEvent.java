@@ -8,38 +8,22 @@ public class RunningEvent extends Event {
 		super();
 		setName("Running Event");	
 		setCode("R0" + getEventsRun());
-				//USE "INSTANCE OF" TO CHECK THAT ONLY RELATED ATHLETES CAN COMPETE
-	}
-	@Override
-	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> loadArray){
-		
-		for (int i=0;i < loadArray.size(); i++) { //Copies main array to event object
-			Athlete currentAthlete = loadArray.get(i);
-			if(currentAthlete instanceof Sprinter) {
-				System.out.println("Check method worked");
-				loadArray.add(currentAthlete);	
-				
-			} else {
-				loadArray.remove(loadArray.indexOf(currentAthlete));
 			}
-		}
-		
-		return loadArray;
-	}
 	
-	public ArrayList<Athlete> checkComp (ArrayList<Athlete> athInComp) {
-		for (int i=0;i < athInComp.size(); i++) { //Copies main array to event object
-			Athlete currentAthlete = athInComp.get(i);
-			if(currentAthlete instanceof Sprinter) {
-				System.out.println("Check method worked");
-			} else {
-				athInComp.remove(athInComp.indexOf(currentAthlete));
-			}
-			
-			
-		}
+	@Override
+	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){ //NEW ATTEMPT
 		
-		return athInComp;
+		ArrayList<Athlete> tempArray = new ArrayList<Athlete>(); 
+//		System.out.println("this array was sent to the subclass" + athletes.size());
+
+		for (int i=0; i < athletes.size(); i++) {			
+			Athlete currentAthlete = athletes.get(i);		
+			if	(currentAthlete instanceof Sprinter || currentAthlete instanceof SuperAthlete) {
+				tempArray.add(currentAthlete);					
+//				System.out.println("Check method worked" + currentAthlete.getName());// Checks the loop has worked correctly				
+				} 
+			}		
+		return tempArray;
 	}
 	
 	

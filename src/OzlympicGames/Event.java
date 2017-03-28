@@ -10,22 +10,23 @@ public class Event {
 	private static String code;
 	
 	private static int eventsRun;
+	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
+	
+	
 	
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
 		this.setCode(code);
 		System.out.println("Event " + code);
 	
 		Random randomizer = new Random();
+		
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
-
-		for (int i=0;i < comp.size(); i++) { //Copies main array to event object
-			Athlete currentAthlete = comp.get(i);
-			athInComp.add(currentAthlete);			
-		}
+		athInComp = loadArray;
+		
 		
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time1 =ath1.compete();	
-		checkComp(athInComp); //THIS IS THE RIGHT PLACE TO PUT THIS!!!!
+
 			
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time2 =ath2.compete();		
@@ -90,26 +91,14 @@ public class Event {
 //		FirstPlace.setScore(5);					
 //		FirstPlace = null;
 		
-		return comp; 
+		return loadArray; 
 	}
 
-	public ArrayList<Athlete> checkComp (ArrayList<Athlete> athInComp) {
-		for (int i=0;i < athInComp.size(); i++) { //Copies main array to event object
-			Athlete currentAthlete = athInComp.get(i);
-			if(currentAthlete instanceof Sprinter) {
-				System.out.println("Check method worked");
-			} else {
-				athInComp.remove(athInComp.indexOf(currentAthlete));
-			}			
-		}
-		
-		return athInComp;
-	}
-	
-	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> loadArray){
-		return loadArray;
-		
-		
+	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){
+		this.athletes = athletes;
+		System.out.println("Called superclass method");
+		return athletes;
+				
 	}
 
 	public String getName() {	
