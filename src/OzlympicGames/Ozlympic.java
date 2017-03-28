@@ -104,27 +104,43 @@ public class Ozlympic {
 		
 			if(option == 1) {				
 				currentEvent = new SwimEvent();
-				eventSet = true;			
+				eventSet = true;				
+				ArrayList<Athlete> returningArray = new ArrayList<Athlete>(); 			
+				returningArray = currentEvent.loadEvent(loadArray); 
+				loadArray = returningArray;				
+
+				System.out.println("The competeing athletes are " );
+				for(int i = 0; i < loadArray.size(); i++) {
+					Athlete currentAthlete = loadArray.get(i);
+					System.out.println(currentAthlete.getName());
+				}
 				
 			} else if(option ==2) {				
 				currentEvent = new RunningEvent();
-				eventSet = true;
-				
-				currentEvent.loadEvent(loadArray); 
-				
-			
-				System.out.println("This array was returned" +loadArray.size());
-				System.out.println(loadArray);
-				
-				
-				
-				
-				
-				
+				eventSet = true;				
+				ArrayList<Athlete> returningArray = new ArrayList<Athlete>(); 			
+				returningArray = currentEvent.loadEvent(loadArray); 
+				loadArray = returningArray;				
+
+				System.out.println("The competeing athletes are " );
+				for(int i = 0; i < loadArray.size(); i++) {
+					Athlete currentAthlete = loadArray.get(i);
+					System.out.println(currentAthlete.getName());
+				}				
+//				System.out.println(returningArray); //This tests the correct array was returned 
+	
 			} else if (option ==3) {
-				
-				currentEvent = new CyclingEvent();				
-				eventSet = true;
+				currentEvent = new CyclingEvent();
+				eventSet = true;				
+				ArrayList<Athlete> returningArray = new ArrayList<Athlete>(); 			
+				returningArray = currentEvent.loadEvent(loadArray); 
+				loadArray = returningArray;				
+
+				System.out.println("The competeing athletes are " );
+				for(int i = 0; i < loadArray.size(); i++) {
+					Athlete currentAthlete = loadArray.get(i);
+					System.out.println(currentAthlete.getName());
+				}
 			} else {
 				System.out.println("Please select an event to hold");
 			}

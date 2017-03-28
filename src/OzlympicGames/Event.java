@@ -21,18 +21,12 @@ public class Event {
 		Random randomizer = new Random();
 		
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
-
+		athInComp = loadArray;
 		
-		//THIS ARRAY ISN'T WORKING
-//		for (int i=0;i < loadArray.size(); i++) { //Copies main array to event object
-//			Athlete loopAthlete = loadArray.get(i);
-//			athInComp.add(loopAthlete);			
-//			System.out.println("here");
-//		}
 		
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time1 =ath1.compete();	
-//		checkComp(athInComp); //THIS IS THE RIGHT PLACE TO PUT THIS!!!!
+
 			
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time2 =ath2.compete();		
@@ -101,7 +95,7 @@ public class Event {
 	}
 
 	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){
-//		this.athletes = athletes;
+		this.athletes = athletes;
 		System.out.println("Called superclass method");
 		return athletes;
 				
