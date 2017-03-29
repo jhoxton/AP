@@ -8,7 +8,7 @@ public class Sprinter extends Athlete  {
 		super(id, name, age, score);
 		
 	}
-public int compete() {
+	public int compete() {
 		
 		int maximum = 20;
 		int minimum = 10;

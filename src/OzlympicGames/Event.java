@@ -35,48 +35,50 @@ public class Event {
 		int time3 =ath3.compete();
 		
 //TODO Turn the below into a method
-		if ( time1 > time2 && time1 > time3 ) { //ATH1 WINS
+		if ( time1 < time2 && time1 < time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
 			ath1.setScore(5);	
 			
-			if (time2 > time3) {
+			if (time2 < time3) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(2);
 				System.out.println("\nThird place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(1);
-			} else if (time3 > time2) {
+			} else if (time3 < time2) {
 				System.out.println("\nSecond place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(2);
 				System.out.println("\nThird place is " + ath3.getName() + " at " + time2);
 				ath2.setScore(1);
 			}						
-		} else if (time2 > time1 && time2 > time3) {//ATH2 WINS		
+		} else if (time2 < time1 && time2 < time3) {//ATH2 WINS		
 			System.out.println("The winner is " + ath2.getName() + " at " + time2);
 			ath2.setScore(5);			
-			if (time1 > time3) {
+			if (time1 < time3) {
 				System.out.println("\nSecond place is " + ath1.getName() + " at " + time1);
 				ath1.setScore(2);
 				System.out.println("\nThird place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(1);
-			} else if (time3 > time1) {
+			} else if (time3 < time1) {
 				System.out.println("\nSecond place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(2);
 				System.out.println("\nThird place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(1);
 			}
-		} else if ( time3 > time2 && time3 > time1 ) {	//ATH3 WINS
+		} else if ( time3 < time2 && time3 < time1 ) {	//ATH3 WINS
 			System.out.println("\nThe winner is " + ath3.getName() + " at " + time3);
 			ath3.setScore(5);
-			if (time2 > time1) {
+			if (time2 < time1) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(2);
 				System.out.println("\nThird place is " + ath1.getName() + " at " + time1);
 				ath1.setScore(1);
-			} else if (time1 > time2) {
+			} else if (time1 < time2) {
 				System.out.println("\nSecond place is " + ath1.getName() + " at " + time1);
 				ath1.setScore(1);
 				System.out.println("\nThird place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(1);
+				
+				
 			}
 		}
 		return loadArray; 
