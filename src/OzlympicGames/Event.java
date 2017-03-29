@@ -16,7 +16,13 @@ public class Event {
 	
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
 		this.setCode(code);
-		System.out.println("Event " + code);
+		
+				String superName = name;
+				
+				if(superName == "Running Event") {
+					System.out.println("This is a running event");
+				}
+				System.out.println("Event " + code);
 	
 		Random randomizer = new Random();
 		
@@ -25,14 +31,14 @@ public class Event {
 		
 		
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
-		int time1 =ath1.compete();	
+		int time1 =ath1.compete(superName);	
 
 			
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
-		int time2 =ath2.compete();		
+		int time2 =ath2.compete(superName);		
 		
 		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));		
-		int time3 =ath3.compete();
+		int time3 =ath3.compete(superName);
 		
 //TODO Turn the below into a method
 		if ( time1 < time2 && time1 < time3 ) { //ATH1 WINS

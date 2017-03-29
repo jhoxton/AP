@@ -8,7 +8,7 @@ public class RunningEvent extends Event {
 		super();
 		setName("Running Event");	
 		setCode("R0" + getEventsRun());
-			}
+	}
 	
 	@Override
 	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){ //NEW ATTEMPT

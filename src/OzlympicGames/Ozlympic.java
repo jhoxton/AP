@@ -157,7 +157,7 @@ public class Ozlympic {
 
 
 	static void predictGame() {
-		//TODO
+		Athlete userPic = new Athlete(0, null, 0, 0);//TODO
 	}
 	
 	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {

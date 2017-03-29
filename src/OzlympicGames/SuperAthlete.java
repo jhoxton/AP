@@ -8,10 +8,21 @@ public class SuperAthlete extends Athlete {
 		super(id, name, age, score);
 		// TODO Auto-generated constructor stub				
 	}
-	public int compete() {
+	public int compete(String eventName) { //SuperAthlete objects use string match to determine event type
+		//Can I use getters for these?
+		int maximum = 0;
+		int minimum = 0;
 		
-		int maximum = 200;
-		int minimum = 100;
+		if(eventName == "Running Event") {
+			maximum = 20;
+			minimum = 10;
+		} else if (eventName =="Cycling Event") {
+			maximum = 200;
+			minimum = 100;
+		} else if (eventName == "Swimming Event") {
+			maximum = 800;
+			minimum = 500;
+		}	
 		
 		Random rn = new Random();
 		int range = maximum - minimum + 1;

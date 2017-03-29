@@ -7,6 +7,7 @@ public class Athlete {
 	private int id;
 	private String name;
 	private int age;
+	private String state;
 	private int score;
 	
 	public Athlete(int id, String name, int age, int score) {
@@ -16,7 +17,7 @@ public class Athlete {
 		this.score = score;
 	}
 		
-	public int compete() {
+	public int compete(String superName) {
 		
 		int maximum = 20;
 		int minimum = 10;
@@ -43,6 +44,14 @@ public class Athlete {
 		return score;
 	}
 	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
