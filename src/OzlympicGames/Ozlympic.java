@@ -12,8 +12,6 @@ public class Ozlympic {
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
 		ArrayList<Event> pastEvents = new ArrayList<Event>();
-//		ArrayList<Event> pastEvents = null;
-		
 		
 		Cyclist cycle = new Cyclist(0, "Cycle Test", 0, 0); //TEST ATHLETES 
 		Cyclist cycle2 = new Cyclist(0, "Cycle Test 2", 0, 0); 
@@ -165,28 +163,33 @@ public class Ozlympic {
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
 			menu(comp, upcoming, loadArray, pastEvents);
-		} else {
+		} else {	
 			
-//		System.out.println("Running Event....");
-		
-		
-		
-		upcoming.runEvent(comp, upcoming, loadArray);	
+			upcoming.runEvent(comp, upcoming, loadArray);	
+			
+			
 			
 		}
-		ArrayList<Event> current = new ArrayList<Event>();
-		current.add(upcoming);
-		pastEvents = current;
 		
+		ArrayList<Event> current = new ArrayList<Event>();
+		
+		current.add(upcoming);
+		
+		pastEvents = current;
 		eventSet = false;
 		menu(comp, upcoming, loadArray, pastEvents);		
 		
 	}
 	
 	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
-		//TODO Loop over past events
 		//TODO Apply get/set methods in Events class
-		System.out.println(pastEvents);
+		
+		for (int i=0; i < pastEvents.size(); i++) {			
+			Event loopEvent = pastEvents.get(i);		
+			System.out.println("Event: " + loopEvent.getCode() + "\nWinner: " + loopEvent.getWinner() + "\n======== ");	
+		}
+		
+		
 		menu(loadArray, upcoming, loadArray, pastEvents);
 		
 		

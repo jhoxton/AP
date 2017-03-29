@@ -3,36 +3,26 @@ package OzlympicGames;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 public class Event {
 	
 	private static String name;
-	private static String code;
-	
+	private static String code;	
 	private static int eventsRun;
+	private String winner;
+	private String second;
+	private String third;
+	
 	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
-	
-	
-	
+
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
-		this.setCode(code);
-		
-				String superName = name;
-				
-				if(superName == "Running Event") {
-					System.out.println("This is a running event");
-				}
-				System.out.println("Event " + code);
-	
-		Random randomizer = new Random();
-		
+		this.setCode(code);		
+		String superName = name;
+		Random randomizer = new Random();		
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
 		athInComp = loadArray;
-		
-		
+			
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time1 =ath1.compete(superName);	
-
 			
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time2 =ath2.compete(superName);		
@@ -43,7 +33,9 @@ public class Event {
 //TODO Turn the below into a method
 		if ( time1 < time2 && time1 < time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
-			ath1.setScore(5);	
+			ath1.setScore(5);
+			
+			setWinner(ath1.getName());
 			
 			if (time2 < time3) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
@@ -120,6 +112,32 @@ public class Event {
 	public static void setEventsRun(int eventsRun) {
 		Event.eventsRun = eventsRun;
 	}
+
+	public String getWinner() {
+		return winner;
+	}
+
+	public void setWinner(String winner) {
+		this.winner = winner;
+	}
+
+	public String getSecond() {
+		return second;
+	}
+
+	public void setSecond(String second) {
+		this.second = second;
+	}
+
+	public String getThird() {
+		return third;
+	}
+
+	public void setThird(String third) {
+		this.third = third;
+	}
+	
+
 				
 	
 }
