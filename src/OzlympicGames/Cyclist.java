@@ -10,6 +10,7 @@ public class Cyclist extends Athlete  {
 	}
 	public int compete() {
 		
+	
 		int maximum = 800;
 		int minimum = 500;
 		
