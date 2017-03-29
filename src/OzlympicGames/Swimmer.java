@@ -7,9 +7,9 @@ public class Swimmer extends Athlete {
 	public Swimmer(int id, String name, int age, int score) {
 		super(id, name, age, score);
 		
-	}
-	
-	public int compete() {
+	}	
+	@Override
+	public int compete(String superName) {
 		
 		int maximum = 200;
 		int minimum = 100;

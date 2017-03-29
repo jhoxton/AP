@@ -1,6 +1,7 @@
 package OzlympicGames;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Event {
@@ -14,16 +15,18 @@ public class Event {
 	
 	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
 
+	
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
+		
 		this.setCode(code);		
 		String superName = name;
 		Random randomizer = new Random();		
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
 		athInComp = loadArray;
-			
+				
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time1 =ath1.compete(superName);	
-			
+					
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time2 =ath2.compete(superName);		
 		
@@ -33,10 +36,9 @@ public class Event {
 //TODO Turn the below into a method
 		if ( time1 < time2 && time1 < time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
-			ath1.setScore(5);
-			
+			ath1.setScore(5);			
 			setWinner(ath1.getName());
-			
+
 			if (time2 < time3) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(2);
@@ -97,7 +99,7 @@ public class Event {
 	}
 
 	public void setCode(String code) {
-		this.code = code;
+		this.code = code +1;
 	}
 
 	public void setName(String name) {

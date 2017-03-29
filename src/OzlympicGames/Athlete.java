@@ -18,14 +18,8 @@ public class Athlete {
 	}
 		
 	public int compete(String superName) {
-		
-		int maximum = 20;
-		int minimum = 10;
-		Random rn = new Random();
-		int range = maximum - minimum + 1;
-		int time =  rn.nextInt(range) + minimum;
-		return time;
-		
+		return 0;
+
 	}
 	
 	public int getId() {
