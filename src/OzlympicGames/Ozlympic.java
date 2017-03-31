@@ -8,17 +8,26 @@ public class Ozlympic {
 	protected static boolean eventSet = false;
 	public static int userPic= 0;
 	
-	
 	public static void main(String[] args) {
 	
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
 		ArrayList<Event> pastEvents = new ArrayList<Event>();
+		ArrayList<Offical> offs = new ArrayList<Offical>();
+
+		//TODO add annouce function to event
+Offical off1 = new Offical(0, null, 0);
+Offical off2 = new Offical(0, null, 0);		
+offs.add(off1);
+offs.add(off2);
+		
+		
 		
 		Cyclist cycle = new Cyclist(1, "Cycle Test", 0, 0); //TEST ATHLETES 
 		Cyclist cycle2 = new Cyclist(2, "Cycle Test 2", 0, 0); 
 		Cyclist cycle3 = new Cyclist(3, "Cycle Test 3", 0, 0); //TEST ATHLETES 
 		Cyclist cycle4 = new Cyclist(4, "Cycle Test 4", 0, 0); //TEST ATHLETES 
+		
 		comp.add(cycle);
 		comp.add(cycle2);
 		comp.add(cycle3);
@@ -77,8 +86,7 @@ public class Ozlympic {
 					break;					
 				case 2: predictGame(loadArray, upcoming, loadArray, pastEvents);
 					break;
-				case 3: startGame(comp, upcoming, loadArray, pastEvents);  
-				
+				case 3: startGame(comp, upcoming, loadArray, pastEvents);  				
 					break;
 				case 4: 
 				displayGames(loadArray, pastEvents);
@@ -195,8 +203,8 @@ public class Ozlympic {
 			
 		}		
 		
-//		Event currentEvent = new Event();
-//		currentEvent = upcoming;
+		Event currentEvent = new Event();
+		currentEvent = upcoming;
 //		pastEvents.add(currentEvent);
 					
 		eventSet = false;
@@ -207,7 +215,7 @@ public class Ozlympic {
 	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
 		//TODO Apply get/set methods in Events class
 		
-//		System.out.println(pastEvents.size());
+		System.out.println(pastEvents.size());
 //		
 //		
 //		for (int i=0; i < pastEvents.size(); i++) {			

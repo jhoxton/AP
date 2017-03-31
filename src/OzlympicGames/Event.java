@@ -13,9 +13,9 @@ public class Event {
 	private String second;
 	private String third;
 	private int winnerId;
+	private Offical offical;
 	
 	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
-
 	
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
 		
@@ -35,21 +35,16 @@ public class Event {
 		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time3 =ath3.compete(superName);
 		
-//TODO The code below should be a method
 		System.out.println("=============");
 		System.out.println(getName()+ " " +getCode());
-		
 		System.out.println("=============");
 		
-		
+		//TODO The code below should be a method
 		if ( time1 < time2 && time1 < time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
 			ath1.setScore(5);			
 			setWinner(ath1.getName());
-			
-			
 			setWinnerId(ath1.getId());
-			
 			
 			if (time2 < time3) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
@@ -68,8 +63,7 @@ public class Event {
 			}						
 		} else if (time2 < time1 && time2 < time3) {//ATH2 WINS		
 			System.out.println("The winner is " + ath2.getName() + " at " + time2);
-			ath2.setScore(5);		
-			
+			ath2.setScore(5);					
 			setWinner(ath2.getName());
 			setWinnerId(ath2.getId());
 			
@@ -93,6 +87,7 @@ public class Event {
 			ath3.setScore(5);
 			setWinner(ath3.getName());
 			setWinnerId(ath3.getId());
+			
 			if (time2 < time1) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(2);
@@ -105,20 +100,15 @@ public class Event {
 				ath1.setScore(1);
 				System.out.println("\nThird place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(1);
-				System.out.println("=============");
-				
-				
+				System.out.println("=============");				
 			}
 		}
-		
-			
 		return loadArray; 
 	}
 
 	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){
 		this.athletes = athletes;
-		return athletes;
-				
+		return athletes;				
 	}
 
 	public String getName() {	
@@ -177,6 +167,15 @@ public class Event {
 
 	public void setWinnerId(int winnerId) {
 		this.winnerId = winnerId;
+	}
+
+	public Offical getOffical() {
+		return offical;
+	}
+
+	public void setOffical(Offical offical) {
+		Random randomOff = new Random();	
+		this.offical = offical;
 	}
 	
 
