@@ -13,11 +13,18 @@ public class Event {
 	private String second;
 	private String third;
 	private int winnerId;
+	
 	private Offical offical;
 	
 	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
+	public ArrayList<Offical> officalInEvent = new ArrayList<Offical>();
 	
-	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
+	
+	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray,ArrayList<Offical> offs) {
+		
+		
+		officalInEvent = offs;
+		
 		
 		this.setCode(code);		
 		String superName = name;
@@ -174,9 +181,14 @@ public class Event {
 	}
 
 	public void setOffical(Offical offical) {
-		Random randomOff = new Random();	
 		this.offical = offical;
 	}
+
+
+
+	
+
+
 	
 
 				

@@ -4,29 +4,41 @@ import java.util.*;
 public class Ozlympic {
 
 	static Event upcoming = new Event();
+	//
+	
 	static Scanner input = new Scanner(System.in);
 	protected static boolean eventSet = false;
 	public static int userPic= 0;
+	private static ArrayList<Event> pastEvents ;
 	
 	public static void main(String[] args) {
 	
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
-		ArrayList<Event> pastEvents = new ArrayList<Event>();
+		ArrayList <Event> pastEvents = new ArrayList<Event>();
 		ArrayList<Offical> offs = new ArrayList<Offical>();
-
+		
+		
+		
+		
 		//TODO add annouce function to event
-Offical off1 = new Offical(0, null, 0);
-Offical off2 = new Offical(0, null, 0);		
+Offical off1 = new Offical(0, "Offical 1", 0);
+Offical off2 = new Offical(0, "Offical 2", 0);		
+Offical off3 = new Offical(0,"Offical 3",0);
+Offical off4 = new Offical(0,"Offical 4",0);
+
+
 offs.add(off1);
 offs.add(off2);
+offs.add(off3);
+offs.add(off4);
 		
 		
 		
 		Cyclist cycle = new Cyclist(1, "Cycle Test", 0, 0); //TEST ATHLETES 
 		Cyclist cycle2 = new Cyclist(2, "Cycle Test 2", 0, 0); 
 		Cyclist cycle3 = new Cyclist(3, "Cycle Test 3", 0, 0); //TEST ATHLETES 
-		Cyclist cycle4 = new Cyclist(4, "Cycle Test 4", 0, 0); //TEST ATHLETES 
+		Cyclist cycle4 = new Cyclist(4, "Lance Armstrong's missing testicle", 0, 0); //TEST ATHLETES 
 		
 		comp.add(cycle);
 		comp.add(cycle2);
@@ -62,10 +74,10 @@ offs.add(off2);
 		comp.add(superAth3);
 		comp.add(superAth4);
 		
-		menu(comp, upcoming, loadArray, pastEvents);
+		menu(comp, upcoming, loadArray, pastEvents, offs);
 		
 	}
-	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
+	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents, ArrayList<Offical> offs) {
 		
 		System.out.println("\n==============");
 		
@@ -82,16 +94,16 @@ offs.add(off2);
 		
 		int option = input.nextInt();
 			switch(option) {
-				case 1: selectGame(comp, upcoming, loadArray);
+				case 1: selectGame(comp, upcoming, loadArray, pastEvents, offs);
 					break;					
-				case 2: predictGame(loadArray, upcoming, loadArray, pastEvents);
+				case 2: predictGame(loadArray, upcoming, loadArray, pastEvents, offs);
 					break;
-				case 3: startGame(comp, upcoming, loadArray, pastEvents);  				
+				case 3: startGame(comp, upcoming, loadArray, pastEvents, offs); //TODO Menu needs 'offs' as a formal parameter  				
 					break;
 				case 4: 
-				displayGames(loadArray, pastEvents);
+				displayGames(loadArray, pastEvents, offs);
 					break;
-				case 5: displayAthletes(comp, loadArray);
+				case 5: displayAthletes(comp, loadArray, offs);
 					break;
 				case 6: 
 					System.out.println("Arrays cleared. Games reset. Goodbye!");
@@ -104,9 +116,11 @@ offs.add(off2);
 			
 		}
 
-	static void selectGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray) {
+	static void selectGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents, ArrayList<Offical> offs) {
 		
 		Event currentEvent = new Event();
+		//TODO Use an Event object constuctor 
+		//Create a method to make new events
 		
 		System.out.println("Select event to hold:\n1) Swimming Event\n2) Sprinting Event\n3) Cycling Event");
 		int option = input.nextInt();
@@ -155,18 +169,38 @@ offs.add(off2);
 			} else {
 				System.out.println("Please select an event to hold");
 			}
-//			upcoming = new Event();
+			
 			currentEvent = upcoming;
-			menu(comp, upcoming, loadArray, null);
+			
+						//TODO Randomly select offical
+						
+			Offical test = pickOffical(offs);
+			System.out.println("Overseeing offical is: " + test.getName());
+			upcoming.setOffical(test);
+			
+	
+			
+
+
+			
+			
+			menu(comp, upcoming, loadArray, pastEvents, offs);
 			return;
 		
 	} 
 	
-	static void predictGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
+	
+	public static Offical pickOffical(ArrayList<Offical> offs) {
+	    Random rand = new Random(); 
+	    Offical randomOff = offs.get(rand.nextInt(offs.size()));
+	    return randomOff;
+	}
+	
+	static void predictGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents, ArrayList<Offical> offs) {
 		
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
-			menu(comp, upcoming, loadArray, pastEvents);
+			menu(comp, upcoming, loadArray, pastEvents, offs);
 		} else {		
 			for (int i=0; i < loadArray.size(); i++) {			
 				Athlete loopAth = loadArray.get(i);		
@@ -174,62 +208,70 @@ offs.add(off2);
 			}
 			System.out.println("Enter ID of athlete you predict will win: ");
 			userPic = input.nextInt();
-			menu(comp, upcoming, loadArray, pastEvents);
+			menu(comp, upcoming, loadArray, pastEvents, offs);
 		}		
 	}
 	
-	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
+	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents, ArrayList<Offical> offs) {
 		
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
-			menu(comp, upcoming, loadArray, pastEvents);
-		} else {				
-			upcoming.runEvent(comp, upcoming, loadArray);	
-			Event shite = new Event();
+			menu(comp, upcoming, loadArray, pastEvents, offs);
+		} else {							
+			System.out.println("Offical for " + upcoming.getCode() + " is " + upcoming.getOffical().getName());
+			upcoming.runEvent(comp, upcoming, loadArray, offs);	//The event launches here
+			Event finEvent = new Event();	
+			finEvent = upcoming;		
+			int winner=  finEvent.getWinnerId();
 			
-			shite = upcoming;
-			
-			
-			int winner=  shite.getWinnerId();
-			
-//			System.out.println("userPic " + userPic);// Checking the user pic
-//			System.out.println("winner " + winner);// Checking the winner's ID
-			
+//			System.out.println("You picked " + userPic + " to win");// Checking the user pic
+//			System.out.println("The winner was " + winner);// Checking the winner's ID
+//			
 			if (userPic != winner) {
 				System.out.println("");
 			} else {
 				System.out.println("Congrats! You picked the winner!");
 			}
 			
-		}		
+		}				
+//		System.out.println(upcoming.getCode()); 
+//		Event test = new Event(); 
+//		test = upcoming; 
+//		pastEvents.add(test); 
+//		test = null;
 		
-		Event currentEvent = new Event();
-		currentEvent = upcoming;
-//		pastEvents.add(currentEvent);
-					
+		
+//		test.setCode(upcoming.getCode());
+//		System.out.println(test.getCode());
+		
+	
+		
+		
+		
+//		
 		eventSet = false;
-		menu(comp, upcoming, loadArray, pastEvents);		
+		menu(comp, upcoming, loadArray, pastEvents, offs);		
 		
 	}
 	
-	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents) {
+	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents,  ArrayList<Offical> offs) {
 		//TODO Apply get/set methods in Events class
 		
 		System.out.println(pastEvents.size());
-//		
-//		
-//		for (int i=0; i < pastEvents.size(); i++) {			
-//			Event loopEvent = pastEvents.get(i);		
-//			System.out.println("Event: " + loopEvent.getCode() + "\nWinner: " + loopEvent.getWinner() + "\n======== ");	
-//		}
+		
+		//???????????
+		for (int i=0; i < pastEvents.size(); i++) {			
+			Event loopEvent = pastEvents.get(i);		
+			System.out.println("Event: " + loopEvent.getCode() + "\nWinner: " + loopEvent.getWinner() + "\n======== ");	
+		}
 		
 		
-		menu(loadArray, upcoming, loadArray, pastEvents);
+		menu(loadArray, upcoming, loadArray, pastEvents, offs);
 		
 		
 	}
 
-	static void displayAthletes(ArrayList<Athlete> comp, ArrayList<Athlete> loadArray) {
+	static void displayAthletes(ArrayList<Athlete> comp, ArrayList<Athlete> loadArray, ArrayList<Offical> offs) {
 		for(int i = 0; i < comp.size(); i++) {
 			
 			Athlete currentAthlete = comp.get(i);
@@ -241,6 +283,6 @@ offs.add(off2);
 			
 		}
 		
-		menu(comp, upcoming, loadArray, null);
+		menu(comp, upcoming, loadArray, null, offs);
 	}
 }
