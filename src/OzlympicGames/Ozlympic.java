@@ -1,9 +1,15 @@
 package OzlympicGames;
 import java.util.*;
+import java.util.HashSet;
+
 
 public class Ozlympic {
 
 	static Event upcoming = new Event();
+
+	Set<Event> finishedEvents = new HashSet<Event>();
+	
+	
 	//
 	
 	static Scanner input = new Scanner(System.in);
@@ -12,6 +18,8 @@ public class Ozlympic {
 	private static ArrayList<Event> pastEvents ;
 	
 	public static void main(String[] args) {
+		
+		System.out.println();
 	
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); 
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); 
@@ -20,21 +28,17 @@ public class Ozlympic {
 		
 		
 		
-		
 		//TODO add annouce function to event
-Offical off1 = new Offical(0, "Offical 1", 0);
-Offical off2 = new Offical(0, "Offical 2", 0);		
-Offical off3 = new Offical(0,"Offical 3",0);
-Offical off4 = new Offical(0,"Offical 4",0);
-
-
-offs.add(off1);
-offs.add(off2);
-offs.add(off3);
-offs.add(off4);
-		
-		
-		
+		Offical off1 = new Offical(0, "Offical 1", 0);
+		Offical off2 = new Offical(0, "Offical 2", 0);		
+		Offical off3 = new Offical(0,"Offical 3",0);
+		Offical off4 = new Offical(0,"Offical 4",0);
+				
+		offs.add(off1);
+		offs.add(off2);
+		offs.add(off3);
+		offs.add(off4);
+				
 		Cyclist cycle = new Cyclist(1, "Cycle Test", 0, 0); //TEST ATHLETES 
 		Cyclist cycle2 = new Cyclist(2, "Cycle Test 2", 0, 0); 
 		Cyclist cycle3 = new Cyclist(3, "Cycle Test 3", 0, 0); //TEST ATHLETES 
@@ -98,7 +102,7 @@ offs.add(off4);
 					break;					
 				case 2: predictGame(loadArray, upcoming, loadArray, pastEvents, offs);
 					break;
-				case 3: startGame(comp, upcoming, loadArray, pastEvents, offs); //TODO Menu needs 'offs' as a formal parameter  				
+				case 3: startGame(comp, upcoming, loadArray, pastEvents, offs); 				
 					break;
 				case 4: 
 				displayGames(loadArray, pastEvents, offs);
@@ -171,24 +175,25 @@ offs.add(off4);
 			}
 			
 			currentEvent = upcoming;
-			
-						//TODO Randomly select offical
-						
+
 			Offical test = pickOffical(offs);
 			System.out.println("Overseeing offical is: " + test.getName());
 			upcoming.setOffical(test);
-			
-	
-			
 
-
-			
-			
 			menu(comp, upcoming, loadArray, pastEvents, offs);
 			return;
 		
 	} 
 	
+	public static void addEvents(Event upcoming) {
+		
+//		 this.upcoming = new Event();
+//		  Event completedEvent = new Event();
+		  
+		  pastEvents.add(upcoming);
+		  	    
+		return;	
+	}
 	
 	public static Offical pickOffical(ArrayList<Offical> offs) {
 	    Random rand = new Random(); 
@@ -213,7 +218,7 @@ offs.add(off4);
 	}
 	
 	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents, ArrayList<Offical> offs) {
-		
+		Event done;
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
 			menu(comp, upcoming, loadArray, pastEvents, offs);
@@ -234,25 +239,17 @@ offs.add(off4);
 			}
 			
 		}				
-//		System.out.println(upcoming.getCode()); 
-//		Event test = new Event(); 
-//		test = upcoming; 
-//		pastEvents.add(test); 
-//		test = null;
-		
-		
-//		test.setCode(upcoming.getCode());
-//		System.out.println(test.getCode());
-		
-	
-		
-		
-		
-//		
+
+		done = upcoming;
+		pastEvents.add(done);
+
+		done =null;
 		eventSet = false;
 		menu(comp, upcoming, loadArray, pastEvents, offs);		
 		
 	}
+	
+
 	
 	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Event> pastEvents,  ArrayList<Offical> offs) {
 		//TODO Apply get/set methods in Events class
