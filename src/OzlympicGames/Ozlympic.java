@@ -1,6 +1,15 @@
 package OzlympicGames;
 import java.util.*;
 
+/*
+ * Advanced Programming Semester 1 2017 Assignment 1
+ * Jake Novak s3609685
+ * 
+ * github: github.com/jhoxton/AP
+ * 
+ * A huge, huge thanks to David Limantoro and Timon Sotiropoulos for all their help and advice !
+ * 
+ */
 
 public class Ozlympic {
 
@@ -9,13 +18,9 @@ public class Ozlympic {
 	static Scanner input = new Scanner(System.in);
 	protected static boolean eventSet = false;
 	public static int userPic= 0;
-	static Event upcoming = new Event();
-	
+	static Event upcoming = new Event();	
 	
 	public static void main(String[] args) {
-		
-		
-		Set<Event> finishedEvents = new HashSet<Event>();
 		
 		System.out.println();
 	
@@ -24,9 +29,6 @@ public class Ozlympic {
 		
 		ArrayList<Offical> offs = new ArrayList<Offical>();
 		ArrayList<String> done = new ArrayList<String>();
-		
-		
-		
 		
 		Offical off1 = new Offical(0, "Offical 1", 0);
 		Offical off2 = new Offical(0, "Offical 2", 0);		
@@ -78,10 +80,10 @@ public class Ozlympic {
 		comp.add(superAth4);
 		
 		
-		menu(comp, upcoming, loadArray, offs, finishedEvents, done);
+		menu(comp, upcoming, loadArray, offs, done);
 		
 	}
-	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, Set<Event> finishedEvents, ArrayList<String> done) {
+	public static void menu(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, ArrayList<String> done) {
 		
 		System.out.println("\n==============");
 		
@@ -98,16 +100,15 @@ public class Ozlympic {
 		
 		int option = input.nextInt();
 			switch(option) {
-				case 1: selectGame(comp, upcoming, loadArray, offs, finishedEvents, done);
+				case 1: selectGame(comp, upcoming, loadArray, offs, done);
 					break;					
-				case 2: predictGame(loadArray, upcoming, loadArray, offs, finishedEvents, done);
+				case 2: predictGame(loadArray, upcoming, loadArray, offs, done);
 					break;
-				case 3: startGame(comp, upcoming, loadArray, offs, finishedEvents, done); 				
+				case 3: startGame(comp, upcoming, loadArray, offs, done); 				
 					break;
-				case 4: 
-				displayGames(loadArray, offs, finishedEvents, done);
+				case 4: displayGames(comp, loadArray, offs, done);
 					break;
-				case 5: displayAthletes(comp, loadArray, offs, finishedEvents, done);
+				case 5: displayAthletes(comp, loadArray, offs, done);
 					break;
 				case 6: 
 					System.out.println("Arrays cleared. Games reset. Goodbye!");
@@ -115,19 +116,13 @@ public class Ozlympic {
 					break;
 				default:
 					System.out.println("Invalid option!");
+					menu(comp, upcoming, loadArray, offs, done);
 			} 			
 		return;
 			
 		}
-
-	public Event newEvent(){
-		
-		//TODO How to constructor?
-		return newEvent();
-		
-	}
 	
-	static void selectGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, Set<Event> finishedEvents, ArrayList<String> done) {
+	static void selectGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, ArrayList<String> done) {
 		
 		Event currentEvent = new Event();
 		upcoming = currentEvent;
@@ -188,7 +183,7 @@ public class Ozlympic {
 			System.out.println("Overseeing offical is: " + test.getName());
 			upcoming.setOffical(test);
 
-			menu(comp, upcoming, loadArray, offs, finishedEvents, done);
+			menu(comp, upcoming, loadArray, offs, done);
 			return;
 		
 	} 
@@ -199,12 +194,12 @@ public class Ozlympic {
 	    return randomOff;
 	}
 	
-	static void predictGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, Set<Event> finishedEvents, ArrayList<String> done) {
+	static void predictGame(ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, ArrayList<String> done) {
 		
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
 			
-			menu(comp, upcoming, loadArray, offs, finishedEvents, done);
+			menu(comp, upcoming, loadArray, offs, done);
 		} else {		
 			for (int i=0; i < loadArray.size(); i++) {			
 				Athlete loopAth = loadArray.get(i);		
@@ -212,15 +207,15 @@ public class Ozlympic {
 			}
 			System.out.println("Enter ID of athlete you predict will win: ");
 			userPic = input.nextInt();
-			menu(comp, upcoming, loadArray, offs, finishedEvents, done);
+			menu(comp, upcoming, loadArray, offs, done);
 		}		
 	}
 	
-	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Offical> offs, Set<Event> finishedEvents, ArrayList<String> done) {
+	static void startGame(ArrayList<Athlete> comp, Event upcoming,ArrayList<Athlete> loadArray, ArrayList<Offical> offs, ArrayList<String> done) {
 		
 		if(eventSet ==false ) {
 			System.out.println("Please select an event to hold first");
-			menu(comp, upcoming, loadArray, offs, finishedEvents, done);
+			menu(comp, upcoming, loadArray, offs, done);
 		} else {							
 			System.out.println("Offical for " + upcoming.getCode() + " is " + upcoming.getOffical().getName());
 			upcoming.runEvent(comp, upcoming, loadArray, offs);	//The event launches here
@@ -238,51 +233,31 @@ public class Ozlympic {
 			}
 			
 		}				
-		//TODO use a constructor for this
-		Event passEvent = new Event();
-		passEvent = upcoming;
-		finishedEvents.add(passEvent);
-		//TODO use a constructor for this
 		
 		String gah = new String ("The winner of " + (upcoming.getCode() + " was " + upcoming.getWinner()) );
 //		System.out.println(gah);
+//		TODO change String name and add 3rd and 2nd place
 		done.add(gah);
 		
 		eventSet = false;
-		menu(comp, upcoming, loadArray, offs, finishedEvents, done);		
+		menu(comp, upcoming, loadArray, offs, done);		
 		
 	}
-	
 
-	
-	static void displayGames(ArrayList<Athlete> loadArray, ArrayList<Offical> offs, Set<Event> finishedEvents, ArrayList<String> done) {
-		//THE MISSING OBJECTS MAY HAVE SOMEHTING TO DO WITH THE RETURN FORM THIS METHOD
+	static void displayGames(ArrayList<Athlete> comp, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, ArrayList<String> done) {
+		
 		for (int i = 0; i < done.size(); i++) {
 			String test = done.get(i);
 		System.out.println(test);
 		}
-//		System.out.println(finishedEvents.size());
-//		System.out.println(finishedEvents);
-		
-
-	       
-	     
-		
 	
-//		
-//		for (int i=0; i < finishedEvents.size(); i++) {			
-//// 			Event loopEvent = finishedEvents.get(i);		
-//// 			System.out.println("Event: " + loopEvent.getCode() + "\nWinner: " + loopEvent.getWinner() + "\n======== ");	
-//}
-//	
-		
-		
-		menu(loadArray, upcoming, loadArray,offs, finishedEvents, done);
+		//TODO Add "comp" here?
+		menu(comp, upcoming, loadArray, offs, done);
 		
 		
 	}
 
-	static void displayAthletes(ArrayList<Athlete> comp, ArrayList<Athlete> loadArray, ArrayList<Offical> offs, Set<Event> finishedEvents, ArrayList<String> done) {
+	static void displayAthletes(ArrayList<Athlete> comp, ArrayList<Athlete> loadArray, ArrayList<Offical> offs,  ArrayList<String> done) {
 		for(int i = 0; i < comp.size(); i++) {
 			
 			Athlete currentAthlete = comp.get(i);
@@ -294,6 +269,6 @@ public class Ozlympic {
 			
 		}
 		
-		menu(comp, upcoming, loadArray, offs, finishedEvents, done);
+		menu(comp, upcoming, loadArray, offs, done);
 	}
 }
