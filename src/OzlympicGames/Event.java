@@ -52,16 +52,20 @@ public class Event {
 			
 			if (time2 < time3) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
-				ath2.setScore(2);
+				ath2.setScore(2);				
+				setSecond(ath2.getName());				
 				System.out.println("\nThird place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(1);
+				setThird(ath3.getName());
 				System.out.println("=============");
 				
 			} else if (time3 < time2) {
 				System.out.println("\nSecond place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(2);
+				setSecond(ath3.getName());
 				System.out.println("\nThird place is " + ath3.getName() + " at " + time2);
 				ath2.setScore(1);
+				setThird(ath2.getName());
 				System.out.println("=============");
 				
 			}						
@@ -74,15 +78,19 @@ public class Event {
 			if (time1 < time3) {
 				System.out.println("\nSecond place is " + ath1.getName() + " at " + time1);
 				ath1.setScore(2);
+				setSecond(ath1.getName());
 				System.out.println("\nThird place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(1);
+				setThird(ath3.getName());
 				System.out.println("=============");
 				
 			} else if (time3 < time1) {
 				System.out.println("\nSecond place is " + ath3.getName() + " at " + time3);
 				ath3.setScore(2);
+				setSecond(ath3.getName());
 				System.out.println("\nThird place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(1);
+				setThird(ath2.getName());
 				System.out.println("=============");
 				
 			}
@@ -95,20 +103,23 @@ public class Event {
 			if (time2 < time1) {
 				System.out.println("\nSecond place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(2);
+				setSecond(ath2.getName());
 				System.out.println("\nThird place is " + ath1.getName() + " at " + time1);
 				ath1.setScore(1);
+				setThird(ath1.getName());
 				System.out.println("=============");
 				
 			} else if (time1 < time2) {
 				System.out.println("\nSecond place is " + ath1.getName() + " at " + time1);
-				ath1.setScore(1);
+				ath1.setScore(2);
+				setSecond(ath1.getName());
 				System.out.println("\nThird place is " + ath2.getName() + " at " + time2);
 				ath2.setScore(1);
+				setThird(ath2.getName());
 				System.out.println("=============");				
 			}
 		}
-//		String gah = (this.getName()) + (this.getCode());
-//		System.out.println(gah);
+		
 		return loadArray; 
 	}
 
@@ -183,10 +194,6 @@ public class Event {
 		this.offical = offical;
 	}
 
-	public void printEvent(){
-		
-	}
-	
 
 
 	

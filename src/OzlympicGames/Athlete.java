@@ -1,8 +1,7 @@
 package OzlympicGames;
 
-import java.util.Random;
 
-public class Athlete {
+public abstract class Athlete {
 
 	private int id;
 	private String name;
@@ -19,7 +18,6 @@ public class Athlete {
 		
 	public int compete(String superName) {
 		return 0;
-
 	}
 	
 	public int getId() {
