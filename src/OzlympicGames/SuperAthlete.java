@@ -6,7 +6,7 @@ public class SuperAthlete extends Athlete {
 
 	public SuperAthlete(int id, String name, int age, int score) {
 		super(id, name, age, score);
-		// TODO Auto-generated constructor stub				
+				
 	}
 	@Override
 	public int compete(String eventName) { //SuperAthlete objects use string match to determine event type

@@ -11,7 +11,7 @@ public class SwimEvent extends Event {
 	}
 
 	@Override
-	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){ //NEW ATTEMPT
+	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){
 		
 		ArrayList<Athlete> tempArray = new ArrayList<Athlete>(); 
 //		System.out.println("this array was sent to the subclass" + athletes.size());

@@ -21,11 +21,8 @@ public class Event {
 	
 	
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray,ArrayList<Offical> offs) {
-		
-		
-		officalInEvent = offs;
-		
-		
+				
+		officalInEvent = offs;		
 		this.setCode(code);		
 		String superName = name;
 		Random randomizer = new Random();		
@@ -110,6 +107,8 @@ public class Event {
 				System.out.println("=============");				
 			}
 		}
+//		String gah = (this.getName()) + (this.getCode());
+//		System.out.println(gah);
 		return loadArray; 
 	}
 
@@ -184,8 +183,9 @@ public class Event {
 		this.offical = offical;
 	}
 
-
-
+	public void printEvent(){
+		
+	}
 	
 
 
