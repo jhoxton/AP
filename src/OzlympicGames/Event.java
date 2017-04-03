@@ -12,38 +12,43 @@ public class Event {
 	private String winner;
 	private String second;
 	private String third;
-	private int winnerId;
-	
+	private int winnerId;	
 	private Offical offical;
 	
 	public ArrayList<Athlete> athletes= new ArrayList<Athlete>();
 	public ArrayList<Offical> officalInEvent = new ArrayList<Offical>();
-	
-	
+		
 	public ArrayList<Athlete> runEvent (ArrayList<Athlete> comp, Event upcoming, ArrayList<Athlete> loadArray,ArrayList<Offical> offs) {
 				
 		officalInEvent = offs;		
-		this.setCode(code);		
+		this.setCode(code);	//Assigns a code to the event	
 		String superName = name;
 		Random randomizer = new Random();		
 		ArrayList<Athlete> athInComp = new ArrayList<Athlete>(); 
-		
+		//The code below picks three athletes from the "loadArray" and assigns them a score
 		athInComp = loadArray;
 				
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time1 =ath1.compete(superName);	
-					
+		
+		athInComp.remove(ath1);//Removes array list reference to prevent doubling up
+							   // If athlete references start disappearing, this is where it happens
+		
 		Athlete ath2 = athInComp.get(randomizer.nextInt(athInComp.size()));
 		int time2 =ath2.compete(superName);		
 		
+		athInComp.remove(ath2);
+		
 		Athlete ath3 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time3 =ath3.compete(superName);
+		
+		athInComp.remove(ath3);
 		
 		System.out.println("=============");
 		System.out.println(getName()+ " " +getCode());
 		System.out.println("=============");
 		
-		//TODO The code below should be a method
+
 		if ( time1 < time2 && time1 < time3 ) { //ATH1 WINS
 			System.out.println("The winner is " + ath1.getName() + " at " + time1);
 			ath1.setScore(5);			
@@ -135,7 +140,7 @@ public class Event {
 	public String getCode() {
 		return code;
 	}
-
+	//Although these setters aren't used, I've left them in for future use
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -193,11 +198,5 @@ public class Event {
 	public void setOffical(Offical offical) {
 		this.offical = offical;
 	}
-
-
-
-	
-
-				
 	
 }

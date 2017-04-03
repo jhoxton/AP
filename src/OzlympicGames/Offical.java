@@ -10,10 +10,8 @@ public class Offical {
 	public Offical(int id, String name, int age) {
 		this.setId(id);
 		this.setName(name);
-		this.setAge(age);
-		
+		this.setAge(age);		
 	}
-
 
 	public int getId() {
 		return id;

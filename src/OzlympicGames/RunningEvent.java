@@ -14,7 +14,7 @@ public class RunningEvent extends Event {
 	public ArrayList<Athlete> loadEvent(ArrayList<Athlete> athletes){ //NEW ATTEMPT
 		
 		ArrayList<Athlete> tempArray = new ArrayList<Athlete>(); 
-//		System.out.println("this array was sent to the subclass" + athletes.size());
+//		System.out.println(athletes.size());//Tests correct array was sent
 
 		for (int i=0; i < athletes.size(); i++) {			
 			Athlete currentAthlete = athletes.get(i);		

@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Sprinter extends Athlete  {
 
-	public Sprinter(int id, String name, int age, int score) {
-		super(id, name, age, score);
+	public Sprinter(int id, String name, int age, String state, int score) {
+		super(id, name, age, state, score);
 		
 	}
 	@Override

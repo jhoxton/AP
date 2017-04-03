@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class SuperAthlete extends Athlete {
 
-	public SuperAthlete(int id, String name, int age, int score) {
-		super(id, name, age, score);
+	public SuperAthlete(int id, String name, int age, String state, int score) {
+		super(id, name, age, state, score);
 				
 	}
 	@Override
-	public int compete(String eventName) { //SuperAthlete objects use string match to determine event type
-		//Can I use getters for these?
+	public int compete(String eventName) {
+//SuperAthlete objects use string match to determine event type
 		
 		int maximum = 0;
 		int minimum = 0;

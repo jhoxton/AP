@@ -9,10 +9,11 @@ public abstract class Athlete {
 	private String state;
 	private int score;
 	
-	public Athlete(int id, String name, int age, int score) {
+	public Athlete(int id, String name, int age, String state, int score) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
+		this.state = state;
 		this.score = score;
 	}
 		
