@@ -2,7 +2,8 @@ package OzlympicGames;
 
 
 public abstract class Athlete {
-
+	
+//	Add a "type" parameter for the text file. This can designate the type of object.	
 	private int id;
 	private String name;
 	private int age;

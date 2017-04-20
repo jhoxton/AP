@@ -21,6 +21,9 @@ import java.util.*;
 	
 	public static void main(String[] args) {
 		
+//		TODO: Add exception catches 
+//		TODO: Look into XMLBeans
+		
 		ArrayList<Athlete> comp = new ArrayList<Athlete>(); // The main arraylist that stores all athletes
 		ArrayList<Athlete> loadArray = new ArrayList<Athlete>(); // Arraylsit to store athletes for the next upcoming event 		
 		ArrayList<Offical> offs = new ArrayList<Offical>();// Arraylist of Officials. And, yes I know it's spelled wrong
@@ -92,6 +95,7 @@ import java.util.*;
 		System.out.println("1) Select a Game to Run\n2) Predict the Winner of Game\n3) Start the Game\n4) Display the results of all Games\n5) Display points of all athletes\n6) Exit\n");
 		System.out.println("Enter an Option: ");
 		
+		try {
 		int option = input.nextInt();
 			switch(option) {
 				case 1: selectGame(comp, upcoming, loadArray, offs, done);
@@ -111,7 +115,12 @@ import java.util.*;
 				default:
 					System.out.println("Invalid option!");
 					menu(comp, upcoming, loadArray, offs, done);
-			} 			
+			}
+		}catch (Exception e) {
+			System.out.println("Invalid input\nPlease enter a number between 1-6");
+			System.out.println();			
+			}
+		
 		return;
 			
 		}
@@ -163,6 +172,11 @@ import java.util.*;
 				System.out.println("The competeing athletes are " );
 				for(int i = 0; i < loadArray.size(); i++) {
 					Athlete currentAthlete = loadArray.get(i);
+					
+					
+					
+					
+					
 					System.out.println(currentAthlete.getName());
 				}
 			} else {

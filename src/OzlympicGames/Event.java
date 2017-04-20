@@ -28,6 +28,10 @@ public class Event {
 		//The code below picks three athletes from the "loadArray" and assigns them a score
 		athInComp = loadArray;
 				
+		
+		//TODO Select only 8 Athletes here. Make a method pickAthletes() to do this.
+//		 This should choose between 4 and 8 athletes. If there are less than 4, throw the exception
+		
 		Athlete ath1 = athInComp.get(randomizer.nextInt(athInComp.size()));		
 		int time1 =ath1.compete(superName);	
 		
@@ -133,6 +137,11 @@ public class Event {
 		return athletes;				
 	}
 
+	public ArrayList<Athlete> pickAthletes(ArrayList<Athlete> athletes){
+		//TODO Pick 4 - 8 from athletes
+		return athletes;
+	}
+	
 	public String getName() {	
 		return name;
 	}
